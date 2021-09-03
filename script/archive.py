@@ -31,8 +31,7 @@ def main():
     target = 'Skia-' + version + '-' + system + '-' + build_type + '-' + machine + classifier + '.zip'
     print('> Writing', target)
 
-    rootdir = split(realpath(__file__))[0]
-    rootdir = skia_path
+    rootdir = os.path.abspath(skia_path)
     list_ = [rootdir]
     zip = zipfile.ZipFile(os.path.join(os.pardir, target), 'w', compression=zipfile.ZIP_DEFLATED)
     while len(list_) > 0:
