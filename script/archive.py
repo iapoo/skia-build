@@ -14,7 +14,9 @@ def parents(path):
 
 
 def main():
-    os.chdir(os.path.join(os.path.dirname(__file__), os.pardir, 'skia'))
+    skia_path = os.path.join(os.path.dirname(__file__), os.pardir, 'skia');
+    print("archiving...", skia_path)
+    os.chdir(skia_path)
 
     build_type = common.build_type()
     version = common.version()
@@ -30,6 +32,7 @@ def main():
     print('> Writing', target)
 
     rootdir = split(realpath(__file__))[0]
+    rootdir = skia_path
     list_ = [rootdir]
     zip = zipfile.ZipFile(os.path.join(os.pardir, target), 'w', compression=zipfile.ZIP_DEFLATED)
     while len(list_) > 0:
