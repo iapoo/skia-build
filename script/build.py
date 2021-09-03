@@ -57,7 +57,7 @@ def main():
   elif 'windows' == system:
     args += [
       'skia_use_system_freetype2=false',
-      # 'skia_use_angle=true',
+      'skia_use_angle=true',
       'skia_use_direct3d=true',
       'extra_cflags=["-DSK_FONT_HOST_USE_SYSTEM_SETTINGS"]',
     ]
@@ -69,7 +69,7 @@ def main():
 
   out = os.path.join('out', build_type + '-' + machine)
   gn = 'gn.exe' if 'windows' == system else 'gn'
-  subprocess.check_call([os.path.join('bin', gn), 'gen', out, '--args=' + ' '.join(args)])
+  subprocess.check_call([os.path.join('bin', gn), 'gen', out, '--ide=vs', '--args=' + ' '.join(args)])
   ninja = 'ninja.exe' if 'windows' == system else 'ninja'
   #subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'skia', 'modules'])
 
