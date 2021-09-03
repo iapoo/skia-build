@@ -1,11 +1,4 @@
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - ".github/workflows/*"
-      - "script/*"
-      - "patches/*"
   workflow_dispatch:
     inputs:
       skip_release:
