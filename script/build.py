@@ -71,7 +71,7 @@ def main():
   gn = 'gn.exe' if 'windows' == system else 'gn'
   subprocess.check_call([os.path.join('bin', gn), 'gen', out, '--ide=vs', '--args=' + ' '.join(args)])
   ninja = 'ninja.exe' if 'windows' == system else 'ninja'
-  #subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'skia', 'modules'])
+  subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'skia', 'modules', 'viewer'])
 
   return 0
 
