@@ -12,6 +12,10 @@ on:
         description: 'Skip release related steps? (true/false)'
         required: true
         default: 'false'
+      skip_build:
+        description: 'Skip build? (true/false)'
+        required: true
+        default: 'false'
 
 env:
   version: m93-87e8842e8c
@@ -36,6 +40,7 @@ jobs:
         run: python3 script/checkout.py --version ${{ env.version }}
       - shell: bash
         run: python3 script/build.py --build-type ${{ matrix.build_type }}
+        if: ${{ github.event.inputs.skip_build != 'true' }}
       - shell: bash
         run: python3 script/archive.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
       - uses: actions/upload-artifact@v2
