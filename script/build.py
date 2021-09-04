@@ -31,7 +31,7 @@ def main():
     'skia_use_system_icu=false',
     # 'skia_enable_skshaper=true',
     # 'skia_enable_svg=true',
-    'skia_enable_skottie=true'
+    'skia_enable_skottie=true',
     'is_debug=false'
   ]
 
