@@ -8,12 +8,12 @@ def main():
   build_type = common.build_type()
   machine = common.machine()
   system = common.system()
-  ndk = common.ndk()  
+  ndk = common.ndk()
 
   if build_type == 'Debug':
     args = ['is_debug=true']
   else:
-    args = ['is_official_build=true']
+    args = ['is_official_build=false']
 
   args += [
     'target_cpu="' + machine + '"',
