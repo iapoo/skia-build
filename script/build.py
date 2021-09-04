@@ -13,7 +13,7 @@ def main():
   if build_type == 'Debug':
     args = ['is_debug=true']
   else:
-    args = ['is_official_build=false']
+    args = ['is_official_build=true']
 
   args += [
     'target_cpu="' + machine + '"',
@@ -32,6 +32,7 @@ def main():
     # 'skia_enable_skshaper=true',
     # 'skia_enable_svg=true',
     'skia_enable_skottie=true'
+    'is_debug=false'
   ]
 
   if 'macos' == system:
@@ -70,7 +71,7 @@ def main():
 
   out = os.path.join('out', build_type + '-' + machine)
   gn = 'gn.exe' if 'windows' == system else 'gn'
-  subprocess.check_call([os.path.join('bin', gn), 'gen', out, '--ide=vs', '--is_debug=false', '--args=' + ' '.join(args)])
+  subprocess.check_call([os.path.join('bin', gn), 'gen', out, '--ide=vs', '--args=' + ' '.join(args)])
   ninja = 'ninja.exe' if 'windows' == system else 'ninja'
   #subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'skia', 'modules'])
   subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'viewer'])
