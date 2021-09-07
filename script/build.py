@@ -13,7 +13,7 @@ def main():
   if build_type == 'Debug':
     args = ['is_debug=true']
   else:
-    args = ['is_official_build=true']
+    args = ['is_official_build=false']
 
   args += [
     'target_cpu="' + machine + '"',
@@ -73,8 +73,8 @@ def main():
   gn = 'gn.exe' if 'windows' == system else 'gn'
   subprocess.check_call([os.path.join('bin', gn), 'gen', out, '--ide=vs', '--args=' + ' '.join(args)])
   ninja = 'ninja.exe' if 'windows' == system else 'ninja'
-  subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'skia', 'modules'])
-  #subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'viewer'])
+  #subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'skia', 'modules'])
+  subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'viewer'])
 
   return 0
 
