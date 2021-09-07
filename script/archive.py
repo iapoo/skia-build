@@ -25,9 +25,7 @@ def main():
     classifier = common.classifier()
 
     globs = [
-        'out/' + build_type + '-' + machine + '/*.a',
-        'out/' + build_type + '-' + machine + '/*.lib',
-        'out/' + build_type + '-' + machine + '/icudtl.dat',
+        'out/' + build_type + '-' + machine + '/*',
         'include/**/*',
         'modules/particles/include/*.h',
         'modules/skottie/include/*.h',
